@@ -1,0 +1,128 @@
+<!-- ##### Single Product Details Area Start ##### -->
+<section class="single_product_details_area d-flex align-items-center">
+  <!-- <div *ngFor="let item of getDatafromlocal"> -->
+  <!-- Single Product Thumb *ngFor="let data of products"-->
+
+  <div class="single_product_thumb clearfix">
+    <div>
+      <owl-carousel-o
+        [options]="customOptions"
+        class="product_thumbnail_slides"
+      >
+        <ng-template carouselSlide
+          ><img src="assets/img/product-img/product-big-1.jpg" alt=""
+        /></ng-template>
+        <ng-template carouselSlide
+          ><img src="assets/img/product-img/product-big-2.jpg" alt=""
+        /></ng-template>
+        <ng-template carouselSlide
+          ><img src="assets/img/product-img/product-big-3.jpg" alt=""
+        /></ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+
+  <!-- Single Product Description -->
+  <div class="single_product_desc clearfix">
+    <span>{{ singleproductdetail.productName }}</span>
+    <a>
+      <h2>{{ singleproductdetail.productDetails }}</h2>
+    </a>
+    <!-- <p class="product-price"><span class="old-price">{{getDatafromlocal}}</span>  </p> -->
+    <p class="product-price">
+      <span class="old-price">{{ singleproductdetail.productPrice }}</span>
+    </p>
+    <p class="product-desc">
+      Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante.
+      Aenean finibus velit id urna vehicula, nec maximus est sollicitudin.
+    </p>
+
+    <!-- Form -->
+    <form
+      class="cart-form clearfix"
+      [formGroup]="productForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <!-- Select Box -->
+
+      <div class="select-box d-flex mt-50 mb-30">
+        <select
+          nice-select
+          [attr.data-value]="productSize"
+          [ngClass]="{ 'is-invalid': submitted && f['productSize'].errors }"
+          bindValue="id"
+          bindLabel="name"
+          id="productSize"
+          formControlName="productSize"
+          class="mr-5"
+        >
+          <option *ngFor="let data of productSize">{{ data.name }}</option>
+        </select>
+        <div
+          *ngIf="submitted && f['productSize'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['productSize'].errors['required']">
+            Size is required
+          </div>
+        </div>
+        <select
+          nice-select
+          [attr.data-value]="productColor"
+          [ngClass]="{ 'is-Invalid': submitted && f['productColor'].errors }"
+          bindValue="id"
+          bindLabel="colorName"
+          id="productColor"
+          formControlName="productColor"
+        >
+          <option *ngFor="let data of productColor">
+            {{ data.colorName }}
+          </option>
+        </select>
+        <div
+          *ngIf="submitted && f['productColor'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['productColor'].errors['required']">
+            Color is required
+          </div>
+        </div>
+      </div>
+      <!-- Cart & Favourite Box -->
+      <div class="cart-fav-box d-flex align-items-center">
+        <!-- Cart -->
+        <a
+          [routerLink]="['/cart']"
+          style="width: 80px; margin-right: 20px"
+          class="btn essence-btn"
+        >
+          Cart
+        </a>
+        <button
+          type="submit"
+          routerLink="/chechout"
+          style="width: 100px; margin-right: 20px"
+          name="addtocart"
+          value="5"
+          class="btn essence-btn"
+        >
+          Chechout
+        </button>
+        <br />
+
+        <!-- Favourite -->
+        <!-- <div class="product-favourite ml-4">
+          <a href="javascript:void(0);"  [class.highlighted]="isActive"
+          (click)="onClick()" class="favme fa fa-heart glyphicon glyphicon-heart"></a>
+        </div> -->
+        <!-- <span
+          class="glyphicon glyphicon-heart"
+          [class.highlighted]="isActive"
+          (click)="onClick()"
+        ></span> -->
+      </div>
+    </form>
+  </div>
+  <!-- </div> -->
+</section>
+<!-- ##### Single Product Details Area End ##### -->

@@ -1,0 +1,121 @@
+<!-- ##### Breadcumb Area Start ##### -->
+<div
+  class="breadcumb_area bg-img"
+  style="background-image: url(assets/img/bg-img/breadcumb.jpg)"
+>
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12">
+        <div class="page-title text-center">
+          <h2>Cart</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<ng-container>
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let value of cartvalue; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ value.productName }}</td>
+              <td>
+                <img style="width: 120px" src="{{ value.productImg }}" alt="" />
+              </td>
+              <td style="width: 25%">{{ value.productDetails }}</td>
+              <th style="width: 14%">{{ value.productPrice }}</th>
+              <td style="width: 14%">
+                <span
+                  class="value-button"
+                  id="increase"
+                  (click)="minusQty(value)"
+                  value="Increase Value"
+                  style="padding-bottom: 27px; color: red; font-weight: bolder"
+                  >-</span
+                >
+                <input
+                  type="text"
+                  id="number"
+                  value=" {{ value.qtyTotal }}"
+                  min="1"
+                />
+                <span
+                  class="value-button"
+                  id="increase"
+                  (click)="addQty(value)"
+                  value="Increase Value"
+                  style="
+                    padding-bottom: 27px;
+                    color: green;
+                    font-weight: bolder;
+                  "
+                  >+</span
+                >
+              </td>
+              <td style="width: 12%">${{ value.isTotal }}</td>
+              <td>
+                <button (click)="removeItem(value)" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4"></td>
+              <td>
+                <button class="btn btn-danger" (click)="clearCart(products)">
+                  Empty Cart
+                </button>
+              </td>
+              <td>
+                <button routerLink="/shop" class="btn btn-primary">
+                  Shop More
+                </button>
+              </td>
+              <td>
+                <button routerLink="/chechout" class="btn btn-success">
+                  Checkout
+                </button>
+              </td>
+              <td>
+                <strong class="product_total"
+                  >Grand Total : ${{ total }}</strong
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- <ng-container>
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">My Cart</h5>
+        </div>
+        <div class="center">
+            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+            <h4>Your cart is empty!</h4>
+            <h6>Add item to it now</h6>
+            <button routerLink="/shop" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</ng-container> -->

@@ -1,0 +1,72 @@
+<div class="cart-bg-overlay"></div>
+
+<div class="right-side-cart-area">
+  <!-- Cart Button -->
+  <div class="cart-button">
+    <a id="rightSideCart" href="javascript:void(0);" (click)="hideCartBar()"
+      ><img src="assets/img/core-img/bag.svg" alt="" />
+      <span>{{
+        totalCartItem && totalCartItem.length > 0 ? totalCartItem.length : 0
+      }}</span></a
+    >
+  </div>
+
+  <div class="cart-content d-flex">
+    <!-- Cart List Area -->
+    <!-- <div class="cart-list">
+          
+            <div class="single-cart-item">
+                <a class="product-image">
+                    <img src="{{data.productImg}}" class="cart-thumb" alt="">
+                    
+                    <div class="cart-item-desc">
+                      <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                        <span class="badge">{{data.productName}}</span>
+                        <h6>{{data.productDetails}}</h6>
+                        <p class="size">Size: S</p>
+                        <p class="color">Color: Red</p>
+                        <p class="price">{{data.productPrice}}</p>
+                    </div>
+                </a>
+            </div>
+        </div> -->
+
+    <!-- Cart Summary -->
+    <div class="cart-amount-summary">
+      <ng-container *ngFor="let data of totalCartItem">
+        <div class="cart-list">
+          <div class="single-cart-item">
+            <a class="product-image">
+              <img src="{{ data.productImg }}" class="cart-thumb" alt="" />
+              <!-- Cart Item Desc -->
+              <div class="cart-item-desc">
+                <span class="product-remove"
+                  ><i class="fa fa-close" aria-hidden="true"></i
+                ></span>
+                <span class="badge">{{ data.productName }}</span>
+                <h6>{{ data.productDetails }}</h6>
+                <p class="size">Size: S</p>
+                <p class="color">Color: Red</p>
+                <p class="price">{{ data.productPrice }}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </ng-container>
+      <h2>Summary</h2>
+      <ul class="summary-table">
+        <li>
+          <span>subtotal:</span> <span>{{ product_Total }}</span>
+        </li>
+        <li><span>delivery:</span> <span>Free</span></li>
+        <li><span>discount:</span> <span>0%</span></li>
+        <li>
+          <span>total:</span> <span>{{ product_Total }}</span>
+        </li>
+      </ul>
+      <div class="checkout-btn mt-100">
+        <a routerLink="/cart" class="btn essence-btn">View Cart</a>
+      </div>
+    </div>
+  </div>
+</div>
